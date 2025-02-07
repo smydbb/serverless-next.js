@@ -48,7 +48,9 @@ export const renderPageToHtml = async (
   }
 
   if (!html) {
-    console.log("html is empty, the page will not be saved in S3");
+    console.log(
+      "html is empty, the page will not be saved in S3"
+    );
     renderOpts.isNotFound = true;
   }
 

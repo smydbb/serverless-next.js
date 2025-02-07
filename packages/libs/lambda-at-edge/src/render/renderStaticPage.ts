@@ -212,15 +212,6 @@ export const renderStaticPage = async ({
 
   // This is a fallback route that should be stored in S3 before returning it
   const { renderOpts, html } = fallbackRoute;
-
-  if (fallbackRoute.isNotFound) {
-    res.writeHead(404, {
-      "Cache-Control": "public, max-age=0, s-maxage=0, must-revalidate"
-    });
-    res.end(html);
-    return await responsePromise;
-  }
-
   const { expires } = await s3StorePage({
     html,
     uri: s3Uri,
